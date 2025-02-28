@@ -9,7 +9,7 @@ on:
       - "v*.*.*"
   schedule:
     - 
-      cron:  "30 * * * *"
+      cron:  "0,15,30,45 * * * *"
 
 jobs:
   publish-image:
@@ -35,7 +35,7 @@ jobs:
           images: ghcr.io/${{ github.repository }}
           tags: |
             type=schedule
-            type=ref,event=branch,value=nightly
+            type=ref,event=branch
             type=ref,event=pr
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
